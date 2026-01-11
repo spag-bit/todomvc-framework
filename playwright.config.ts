@@ -29,6 +29,19 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+
+    actionTimeout: 5000,     // Time for click(), fill(), etc.
+    navigationTimeout: 5000, // Time for page.goto() or page.reload(
+
+    /* --- ARTIFACTS CONFIGURATION --- */
+
+    // Takes a screenshot only when a test fails
+    screenshot: 'only-on-failure',
+
+    // Records video but deletes it if the test passes (saves disk space)
+    video: 'retain-on-failure',
+
+    // Captures a full trace (DOM snapshots + Network) on the first retry
     trace: 'on-first-retry',
   },
 
