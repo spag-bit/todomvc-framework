@@ -1,68 +1,118 @@
-# TodoMVC Framework
+# 🚀 TodoMVC Playwright Framework
 
-A Playwright-based automated testing framework for TodoMVC applications with comprehensive test coverage using the Page Object Model pattern.
+A Playwright + TypeScript test framework for the TodoMVC demo app. Built with Page Object Model (POM), custom fixtures, and data-driven tests to be clear, maintainable, and easy to extend.
+
+---
+
+## Quick overview
+
+- Playwright tests written in TypeScript  
+- Page objects live in `pages/`  
+- Fixtures live in `fixtures/` and provide the `todoPage` object to tests  
+- Test data in `test-data/` for reproducible scenarios
+
+---
 
 ## Prerequisites
 
-- Node.js 16+ 
-- npm or yarn
+- Node.js 16+  
+- npm (or yarn)
 
-## Setup Instructions
+---
 
-1. **Install dependencies**
+## Setup
+
+1. Clone repo
+   ```bash
+   git clone https://github.com/spag-bit/todomvc-framework.git
+   cd todomvc-framework
+   ```
+2. Install dependencies
    ```bash
    npm install
    ```
-
-2. **Install Playwright browsers**
+3. Install Playwright browsers
    ```bash
    npx playwright install
    ```
 
-## Running Tests
+---
 
-**Run all tests**
-```bash
-npx playwright test
+## Run tests
+
+- Run full suite (default)
+  ```bash
+  npx playwright test
+  ```
+- Run all tests in headed mode
+  ```bash
+  npx playwright test --headed
+  ```
+- Run a single spec
+  ```bash
+  npx playwright test tests/todo.spec.ts
+  ```
+- Debug mode (Playwright inspector)
+  ```bash
+  npx playwright test --debug
+  ```
+- Show HTML report after run
+  ```bash
+  npx playwright show-report
+  ```
+
+If your package.json defines helper scripts, you can also use:
+- npm run test:crud — core add/edit/delete scenarios  
+- npm run test:filters — filter-specific scenarios  
+- npm run test:edge — multi-tab / compatibility / persistence tests
+
+---
+
+## Test cases mapped
+
+- TC_001 — Add Todo: placeholder, auto-clear, items left count  
+- TC_002 — Edit Todo: edit across All, Active, Completed filters  
+- TC_003 — Filters: complete flow, Clear Completed visibility, count  
+- TC_004 — Delete: hover → click delete (item removal)  
+- TC_005 — Multi-Tab: sync between tabs  
+- TC_006 — Compatibility: XPath/locator checks across browsers  
+- TC_007 — Storage: LocalStorage persistence after reload
+
+---
+
+## Project structure
+
+```
+.
+├── .github/workflows/    # CI (Playwright workflow)
+├── fixtures/             # Custom Playwright fixtures
+├── pages/                # Page Object Models
+├── test-data/            # Test data (DDT)
+├── tests/                # Test specs
+├── playwright.config.ts  # Playwright config
+└── README.md
 ```
 
-**Run tests in headed mode (see browser)**
-```bash
-npx playwright test --headed
-```
+---
 
-**Run specific test file**
-```bash
-npx playwright test tests/todo.spec.ts
-```
+## Reporting & artifacts
 
-**Run tests in debug mode**
-```bash
-npx playwright test --debug
-```
+On failures the framework captures:
+- HTML report (use `npx playwright show-report`)  
+- Trace Viewer (timeline with DOM and network)  
+- Videos/screenshots saved under `test-results/` (when enabled)
 
-**View test report**
-```bash
-npx playwright show-report
-```
+---
 
-## Project Structure
+## CI
 
-```
-TodoMVC-framework/
-├── fixtures/          # Test fixtures and setup
-├── pages/             # Page Object Models
-├── tests/             # Test specifications
-├── test-data/         # Test data files
-└── playwright.config.ts
-```
+GitHub Actions workflow is configured at `.github/workflows/playwright.yml`. It runs on pushes and PRs and uploads reports as artifacts.
 
-## Test Cases
+---
 
-- **TC_001**: Add New Todo Item and Verify UI State
-- **TC_002**: Verify user can edit tasks in All, Active, and Completed filters
-- **TC_003**: Mark task as completed and verify filter behavior
+## Contributing
 
-## Architecture
+- Open an issue for bugs or features.  
+- Make changes on a branch and submit a PR with a short description and test updates if needed.
 
-This framework follows the **Page Object Model (POM)** pattern for better maintainability and reusability of test code.
+---
