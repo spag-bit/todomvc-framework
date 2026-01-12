@@ -24,9 +24,12 @@ export class TodoPage {
     // Main section is used to check visibility of the list
     this.mainSection = page.locator('.main');
 
+    // Filter links
     this.filterAll = page.getByRole('link', { name: 'All' });
     this.filterActive = page.getByRole('link', { name: 'Active' });
     this.filterCompleted = page.getByRole('link', { name: 'Completed' });
+
+    // Footer elements
     this.todoCount = page.locator('.todo-count');
     this.clearCompletedButton = page.locator('.clear-completed');
 
@@ -85,6 +88,11 @@ export class TodoPage {
     await todo.hover();
     await todo.locator('.destroy').click();
   }
+
+   /**
+   * Navigates to a specific filter view
+   * @param filter The filter to select: 'All', 'Active', or 'Completed'
+   */
 
   async selectFilter(filter: 'All' | 'Active' | 'Completed') {
     if (filter === 'All') await this.filterAll.click();

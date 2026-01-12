@@ -4,6 +4,7 @@ export const TODO_DATA = {
     placeholderText: 'What needs to be done?',
     expectedCountText: '1 item left'
   },
+
   TC_002: {
       // Initial setup (Precondition: At least 2 tasks)
       initialTasks: ['Fix Car', 'Pet the dog'],
@@ -19,13 +20,12 @@ export const TODO_DATA = {
       },
       // Phase 3: Edit in "Completed" view
       editInCompleted: {
-        // We will complete 'Walk the dog' first, then edit it
         oldText: 'Walk the dog', 
         newText: 'Go jogging'
       }
     },
   TC_003: { taskName: 'Submit Exam' },
-  // TC_004: { itemText: 'Read Book' },
+
   TC_004: { initialItems: ['Task One', 'Enougn thinking','Task Three'],
             targetToDelete: 'Enougn thinking'
   },
