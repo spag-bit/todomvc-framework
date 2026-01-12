@@ -5,7 +5,13 @@ export class TodoPage {
   readonly todoInput: Locator;
   readonly todoItems: Locator;
   readonly mainSection: Locator;
+  readonly filterAll: Locator;
+  readonly filterActive: Locator;
+  readonly filterCompleted: Locator;
+  readonly todoCount: Locator;
+  readonly clearCompletedButton: Locator;
 
+  
   constructor(page: Page) {
     this.page = page;
     
@@ -17,6 +23,13 @@ export class TodoPage {
     
     // Main section is used to check visibility of the list
     this.mainSection = page.locator('.main');
+
+    this.filterAll = page.getByRole('link', { name: 'All' });
+    this.filterActive = page.getByRole('link', { name: 'Active' });
+    this.filterCompleted = page.getByRole('link', { name: 'Completed' });
+    this.todoCount = page.locator('.todo-count');
+    this.clearCompletedButton = page.locator('.clear-completed');
+
   }
 
   /**
@@ -71,5 +84,11 @@ export class TodoPage {
     // The destroy button is only visible on hover in TodoMVC
     await todo.hover();
     await todo.locator('.destroy').click();
+  }
+
+  async selectFilter(filter: 'All' | 'Active' | 'Completed') {
+    if (filter === 'All') await this.filterAll.click();
+    if (filter === 'Active') await this.filterActive.click();
+    if (filter === 'Completed') await this.filterCompleted.click();
   }
 }
