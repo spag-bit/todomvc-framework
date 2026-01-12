@@ -19,6 +19,13 @@ test.describe("TodoMVC Technical Exam - State Suite", () => {
     // Expected Result: Task is now visible in Tab 2
     await expect(pageTwo.getByText(TODO_DATA.TC_005.itemText)).toBeVisible();
   });
+  test('TC_006: XPath/Locator Stability', async ({ todoPage }) => {
+    // Step 1: Interact using the XPath-defined locator in the Page Object
+    await todoPage.todoInput.fill(TODO_DATA.TC_006.itemText);
+    await todoPage.todoInput.press('Enter');
+    // Expected Result: Element found and task added correctly
+    await expect(todoPage.todoItems).toContainText([TODO_DATA.TC_006.itemText]);
+  });
 
   test('TC_007: Data Persistence', async ({ todoPage, page }) => {
     // Step 1: Add task
