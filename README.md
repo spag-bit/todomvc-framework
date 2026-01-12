@@ -1,6 +1,11 @@
 # TodoMVC Framework
 
-A Playwright-based automated testing framework for TodoMVC applications.
+A Playwright-based automated testing framework for TodoMVC applications with comprehensive test coverage using the Page Object Model pattern.
+
+## Prerequisites
+
+- Node.js 16+ 
+- npm or yarn
 
 ## Setup Instructions
 
@@ -52,7 +57,12 @@ TodoMVC-framework/
 └── playwright.config.ts
 ```
 
-## Prerequisites
+## Test Cases
 
-- Node.js 16+ 
-- npm or yarn
+- **TC_001**: Add New Todo Item and Verify UI State
+- **TC_002**: Verify user can edit tasks in All, Active, and Completed filters
+- **TC_003**: Mark task as completed and verify filter behavior
+
+## Architecture
+
+This framework follows the **Page Object Model (POM)** pattern for better maintainability and reusability of test code.
