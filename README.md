@@ -103,16 +103,3 @@ On failures the framework captures:
 - Videos/screenshots saved under `test-results/` (when enabled)
 
 ---
-
-## CI
-
-GitHub Actions workflow is configured at `.github/workflows/playwright.yml`. It runs on pushes and PRs and uploads reports as artifacts.
-
----
-
-## Contributing
-
-- Open an issue for bugs or features.  
-- Make changes on a branch and submit a PR with a short description and test updates if needed.
-
----
